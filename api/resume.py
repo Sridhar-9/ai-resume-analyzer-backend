@@ -4,7 +4,6 @@ import os
 from backend.services.parser import extract_text, save_local, file_type
 from backend.services.cleaner import clean_text
 from backend.services.analyzer import analyze_resume_with_ai  
-from backend.utils.helper import verify_api_key
 from datetime import datetime
 from slowapi import Limiter
 from slowapi.util import get_remote_address
@@ -16,10 +15,7 @@ request_log = {}
 
 @router.post("/upload")
 @limiter.limit("3/minute")
-async def analyse_resume(request: Request,file: UploadFile = File(...), x_api_key: str = Header(...)):
-
-
-    verify_api_key(x_api_key)
+async def analyse_resume(request: Request,file: UploadFile = File(...)):
 
     today = datetime.now().date()
     if today not in request_log:
