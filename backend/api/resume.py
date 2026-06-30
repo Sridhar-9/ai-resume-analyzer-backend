@@ -1,9 +1,9 @@
 from fastapi import APIRouter, UploadFile, File, HTTPException, status, Header, Request
 from fastapi.responses import JSONResponse
 import os
-from backend.services.parser import extract_text, save_local, file_type
-from backend.services.cleaner import clean_text
-from backend.services.analyzer import analyze_resume_with_ai  
+from backend.backend.services.parser import extract_text, save_local, file_type
+from backend.backend.services.cleaner import clean_text
+from backend.backend.services.analyzer import analyze_resume_with_ai  
 from datetime import datetime
 from slowapi import Limiter
 from slowapi.util import get_remote_address

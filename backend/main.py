@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from backend.api.resume import router, limiter
+from backend.backend.api.resume import router, limiter
 from fastapi.middleware.cors import CORSMiddleware
 from slowapi.errors import RateLimitExceeded
 from fastapi.responses import JSONResponse

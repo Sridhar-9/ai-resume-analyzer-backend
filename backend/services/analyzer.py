@@ -1,6 +1,6 @@
 import json
-from backend.ai.gemini_clients import call_gemini
-from backend.ai.prompts import get_resume_prompt
+from backend.backend.ai.gemini_clients import call_gemini
+from backend.backend.ai.prompts import get_resume_prompt
 
 
 def safe_json_loads(text: str):
