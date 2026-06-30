@@ -1,6 +1,7 @@
 import magic
 import pdfplumber
 from fastapi import UploadFile, File
+import os
 
 UPLOAD_FOLDER = "uploaded_files"
 
@@ -12,6 +13,7 @@ async def file_type(file: UploadFile = File(...)):
 
 
 def save_local(filename, file_content):
+    os.makedirs(UPLOAD_FOLDER, exist_ok=True)
     with open(f"{UPLOAD_FOLDER}/{filename}", "wb") as f:
         f.write(file_content)
 
