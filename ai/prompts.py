@@ -3,7 +3,7 @@ def get_resume_prompt(text: str) -> str:
     Builds a strict prompt to ensure JSON output.
     """
 
-    # 🛑 Prevent extremely long input
+    
     text = text[:15000]
 
     return  f"""
