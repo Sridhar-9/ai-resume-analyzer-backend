@@ -18,7 +18,7 @@ def call_gemini(prompt: str) -> str:
     Includes fallback for future API changes.
     """
 
-    # 🛑 Basic prompt validation (avoid empty / huge payloads)
+
     if not prompt or len(prompt.strip()) == 0:
         raise ValueError("Prompt is empty")
 
@@ -26,7 +26,7 @@ def call_gemini(prompt: str) -> str:
         raise ValueError("Prompt too large")
 
     try:
-        # ✅ Primary method (simple + stable)
+        
         response = client.models.generate_content(
             model="gemini-2.5-flash",
             contents=prompt
@@ -38,7 +38,7 @@ def call_gemini(prompt: str) -> str:
         return response.text
 
     except Exception:
-        # 🔁 Fallback (future-proof if API changes)
+        
         try:
             stream = client.interactions.create(
                 model="gemini-2.5-flash",

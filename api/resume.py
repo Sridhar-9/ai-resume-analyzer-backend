@@ -55,7 +55,7 @@ async def analyse_resume(request: Request,file: UploadFile = File(...), x_api_ke
 
     cleaned_text = clean_text(raw_text)
 
-    # 🔥 THIS IS THE AI PART
+
     try:
         ai_result = analyze_resume_with_ai(cleaned_text)
     except Exception as e:

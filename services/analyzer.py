@@ -11,16 +11,16 @@ def safe_json_loads(text: str):
     if not text:
         raise ValueError("Empty AI response")
 
-    # 🔧 Remove markdown wrappers if present
+    
     text = text.replace("```json", "").replace("```", "").strip()
 
-    # 🛑 Try direct parsing
+    
     try:
         return json.loads(text)
     except json.JSONDecodeError:
         pass
 
-    # 🔁 Attempt recovery (extract JSON block)
+    
     start = text.find("{")
     end = text.rfind("}")
 
@@ -45,7 +45,7 @@ def analyze_resume_with_ai(cleaned_text: str):
 
         parsed = safe_json_loads(ai_text)
 
-        # 🛡️ Final validation
+        
         required_keys = {"score", "strengths", "weaknesses", "suggestions"}
 
         if not all(key in parsed for key in required_keys):
