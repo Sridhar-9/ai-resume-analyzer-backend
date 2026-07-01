@@ -7,15 +7,19 @@ from backend.services.analyzer import analyze_resume_with_ai
 from datetime import datetime
 from slowapi import Limiter
 from slowapi.util import get_remote_address
+import requests
 
 router = APIRouter()
 
 limiter = Limiter(key_func=get_remote_address)
 request_log = {}
+API_KEY = os.getenv("API_SECRET_KEY")
 
 @router.post("/upload")
 @limiter.limit("3/minute")
 async def analyse_resume(request: Request,file: UploadFile = File(...)):
+    if request.headers.get("X-API-Key") != API_KEY:
+        raise HTTPException(status_code=403, detail="Forbidden")
 
     today = datetime.now().date()
     if today not in request_log:
