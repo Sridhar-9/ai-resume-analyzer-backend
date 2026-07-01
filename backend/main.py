@@ -27,9 +27,9 @@ async def rate_limit_handler(request, exc):
 app.add_middleware(
 
     CORSMiddleware,
-    allow_origins=["*"],  # Streamlit
+    allow_origins=["https://ai-resume-analyzer-bv2s755bacrazfmrpzbuf2.streamlit.app"],  # Streamlit
     allow_credentials=True,
-    allow_methods=["POST"],
+    allow_methods=["*"],
     allow_headers=["*"],
 
 )
